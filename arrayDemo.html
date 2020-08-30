@@ -4,7 +4,7 @@
 </style>
 <body>
 
-    <form action="/arrayDemo.php">
+    <form action="arrayDemo.php" method="POST">
         <p>
             <label for="numRows">Number of Rows: </label>
             <input type="number" id="numRows" name="numRows">
@@ -21,8 +21,8 @@
             <label for="maxRandomVal">Maximum Number: </label>
             <input type="number" id="maxRandomVal" name="maxRandomVal">
         </p>
-    <button>Reset</button>
-    <button>Submit</button>
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
     </form>
 
 </body>

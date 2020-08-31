@@ -2,16 +2,11 @@
 <body>
 
 <?php
-$numGen = array();
 
-<<<<<<< Updated upstream
-for ($x = 0; $x < $_POST['numRows']; $x++) {
-    $numGen[$x] = rand($_POST['minRandomVal'], $_POST['maxRandomVal']);
-    print "<td>$numGen[$x]</td>";
-    
-}
-
-=======
+$rows = $_POST['numRows'];
+$columns = $_POST['numColumns'];
+$minRandomVal = $_POST['minRandomVal'];
+$maxRandomVal = $_POST['maxRandomVal'];
 //inserts data into numGen array
 for ($x = 0; $x < $rows; $x++) {
     for ($y = 0; $y < $columns; $y++) {
@@ -56,7 +51,6 @@ for($x = 0; $x < $rows; $x++) {
     print("</tr>");
 }
 print("</table>");
->>>>>>> Stashed changes
 ?>
 <p><a href="arrayDemo.html">Home Page</a></p>
 </body>

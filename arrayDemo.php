@@ -8,6 +8,8 @@
         $minRandomVal = $_POST['minRandomVal'];
         $maxRandomVal = $_POST['maxRandomVal'];
 
+
+
         /* --------------------
                 TABLE 1
         -------------------- */
@@ -37,7 +39,8 @@
         print("<p>Your array size is: " . $rows . " x " . $columns . "</p>");
         print("<p>Your minimum value is: " . $minRandomVal . "</p>");
         print("<p>Your maximum value is: " . $maxRandomVal . "</p>");
-        print("</table>");
+        print("</table><br>");
+
 
 
         /* --------------------
@@ -102,30 +105,44 @@
             }
             print("</tr>");
         }
-        print("</table>");
+        print("</table><br>");
+
+
+
+        /* --------------------
+                TABLE 3
+        -------------------- */
+
 
         print("<table border = '3' >");
         for($x = 0; $x < $rows; $x++) {
             print("<tr>");
-            for($y = 0; $y < $columns; $y++) {
+            for($y = 0; $y < $columns; $y++) { // ouput rows of numbers, i.e. Table 1
                 print("<td align='center'>" . $numGen[$x][$y] . "</td>");
+                
+                
+                
+            }
+            print("</tr>");
+
+            print("<tr>");
+            for ($y = 0; $y < $columns; $y++) { // output rows of signage for values
                 
                 if ($numGen[$x][$y] < 0) {
                     
                     print("<td align='center'>" . "negative" . "</td>");
-                
+                    
                 }
                 else if ($numGen[$x][$y] > 0) {
                     
                     print("<td align='center'>" . "positive" . "</td>");
-                
+                    
                 }
                 else if ($numGen[$x][$y] == 0) {
                     
                     print("<td align='center'>" . "zero" . "</td>");
-                
+                    
                 }
-                
             }
             print("</tr>");
         }

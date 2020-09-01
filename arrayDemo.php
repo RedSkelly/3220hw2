@@ -79,11 +79,29 @@
 
             $dataGen[$j][2] = number_format($avg,3);
 
-            $stdDev1 = pow(($sum - ($avg * $columns)),2); // subtract mean from each value
-            $stdDev2 = $stdDev1 * (1/$columns); // 
-            $stdDev3 = sqrt($stdDev2);
+            
+            $columns = count($arr);
+            $variance = 0.0;
+            $avg = array_sum($arr)/$columns;
 
-            $dataGen[$j][3] = number_format($stdDev3,3);
+            foreach($arr as $i) {
+
+                $variance += pow(($i - $avg), 2); 
+            }
+            return (float)sqrt($variance/$columns);
+            
+
+            $dataGen[$j][3] = stdDev($numGen[0][$i]);
+
+
+
+
+
+            // $stdDev1 = pow(($sum - ($avg * $columns)),2); // subtract mean from each value
+            // $stdDev2 = $stdDev1 * (1/$columns); // 
+            // $stdDev3 = sqrt($stdDev2);
+
+            // $dataGen[$j][3] = number_format($stdDev3,3);
         }
         
 

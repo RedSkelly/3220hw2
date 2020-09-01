@@ -8,6 +8,8 @@
         $minRandomVal = $_POST['minRandomVal'];
         $maxRandomVal = $_POST['maxRandomVal'];
 
+
+
         /* --------------------
                 TABLE 1
         -------------------- */
@@ -37,7 +39,8 @@
         print("<p>Your array size is: " . $rows . " x " . $columns . "</p>");
         print("<p>Your minimum value is: " . $minRandomVal . "</p>");
         print("<p>Your maximum value is: " . $maxRandomVal . "</p>");
-        print("</table>");
+        print("</table><br>");
+
 
 
         /* --------------------
@@ -70,7 +73,6 @@
             for($i = 0; $i < $columns; $i++) {
                 
                 $sum += $numGen[$j][$i];
-
             }
 
             $avg = $sum / $columns;
@@ -79,11 +81,20 @@
 
             $dataGen[$j][2] = number_format($avg,3);
 
-            $stdDev1 = pow(($sum - ($avg * $columns)),2); // subtract mean from each value
-            $stdDev2 = $stdDev1 * (1/$columns); // 
-            $stdDev3 = sqrt($stdDev2);
+            // $stdDev1 = ($sum - ($avg * $columns)); // subtract mean from each value
+            // $stdDev2 = $stdDev1 * (1/$columns); // 
+            // $stdDev3 = sqrt($stdDev2);
 
-            $dataGen[$j][3] = number_format($stdDev3,3);
+            $variance = 0;
+            $stdDev = 0;
+            for($i = 0; $i < $columns; $i++) {
+
+                $variance += (pow(($numGen[$j][$i] - $avg), 2)) / ($columns - 1);
+            
+            }
+
+            $stdDev += sqrt($variance);
+            $dataGen[$j][3] = number_format($stdDev,3);
         }
         
 
@@ -94,6 +105,50 @@
             }
             print("</tr>");
         }
+        print("</table><br>");
+
+
+
+        /* --------------------
+                TABLE 3
+        -------------------- */
+
+
+        print("<table border = '3' >");
+        for($x = 0; $x < $rows; $x++) {
+            print("<tr>");
+            for($y = 0; $y < $columns; $y++) { // ouput rows of numbers, i.e. Table 1
+                print("<td align='center'>" . $numGen[$x][$y] . "</td>");
+                
+                
+                
+            }
+            print("</tr>");
+
+            print("<tr>");
+            for ($y = 0; $y < $columns; $y++) { // output rows of signage for values
+                
+                if ($numGen[$x][$y] < 0) {
+                    
+                    print("<td align='center'>" . "negative" . "</td>");
+                    
+                }
+                else if ($numGen[$x][$y] > 0) {
+                    
+                    print("<td align='center'>" . "positive" . "</td>");
+                    
+                }
+                else if ($numGen[$x][$y] == 0) {
+                    
+                    print("<td align='center'>" . "zero" . "</td>");
+                    
+                }
+            }
+            print("</tr>");
+        }
+
+
+
         print("</table>");
     ?>
     <p>
